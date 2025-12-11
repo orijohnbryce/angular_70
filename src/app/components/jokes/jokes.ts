@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { JokeServices } from '../../services/joke-services';
 import { ChangeDetectorRef } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-jokes',
-    imports: [CommonModule],
+    imports: [CommonModule, FormsModule],
     templateUrl: './jokes.html',
     styleUrl: './jokes.css',
 })

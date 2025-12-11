@@ -1,6 +1,12 @@
 <p>jokes works!</p>
 
 <p> {{joke?.delivery | uppercase}} </p>
+<p> {{200 | currency: "USD"}} </p>
 <!-- <p> {{joke.error}} </p> -->
 
-<button (click)="refreshJoke()"> Refresh joke </button>
+<button [disabled]="true" (click)="refreshJoke()"> Refresh joke </button>
+
+<div *ngFor="let x of [1,2,3,4]">
+    <p> {{x}} </p>
+</div>
+<!-- <input [(ngModel)]="searchText"/> -->
