@@ -1,3 +1,6 @@
 <p>jokes works!</p>
-<p *ngIf="showJoke === 5"> This is a joke  </p>
-<p class="name"> Name is: {{user.name}}</p>
+
+<p> {{joke?.delivery | uppercase}} </p>
+<!-- <p> {{joke.error}} </p> -->
+
+<button (click)="refreshJoke()"> Refresh joke </button>

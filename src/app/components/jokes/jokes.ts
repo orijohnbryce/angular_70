@@ -1,16 +1,33 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { JokeServices } from '../../services/joke-services';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  selector: 'app-jokes',
-  imports: [CommonModule],
-  templateUrl: './jokes.html',
-  styleUrl: './jokes.css',
+    selector: 'app-jokes',
+    imports: [CommonModule],
+    templateUrl: './jokes.html',
+    styleUrl: './jokes.css',
 })
-export class Jokes {
-    public showJoke = 5;
-    public user = {
-        age: 40,
-        name: "David"
+export class Jokes implements OnInit, OnDestroy {
+
+    public joke: any;
+
+    constructor(private jokeServices: JokeServices, 
+                private cdr: ChangeDetectorRef) { }
+
+
+    async ngOnInit(): Promise<void> {
+        console.log("Jokes Rendered");
+        this.refreshJoke();
+    }
+    
+    ngOnDestroy(): void {
+        console.log("Jokes Destroyed");
+    }
+    
+    async refreshJoke(){
+        this.joke = await this.jokeServices.getJoke();
+        this.cdr.detectChanges();
     }
 }
